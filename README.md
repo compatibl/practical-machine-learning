@@ -1,8 +1,6 @@
 # Practical Machine Learning Workshop Series
 
-# Next Event
-
-## Practical Machine Learning for Quantitative Finance.
+# Practical Machine Learning for Quantitative Finance
 
 - Post conference workshop at the WBS Spring Conference
 - Date: Monday 29th & Tuesday 30th March 2021
