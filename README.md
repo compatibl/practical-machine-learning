@@ -26,7 +26,7 @@ AWS. Participants are welcome to just observe, or if desired  also participate
 in writing or running the code (participation is strictly optional). The code 
 will be available on GitHub after the workshop.
 
-### Day 1 – Regression Models
+### Day 1 â€“ Regression Models
 
 - Regression model types
 - Feedforward networks
@@ -34,7 +34,7 @@ will be available on GitHub after the workshop.
 
 **Practice session: Estimation of Drift in Real-World Measure**
 
-### Day 2 – Generative Models
+### Day 2 â€“ Generative Models
 
 - Generative model types
 - Joint and Conditional Probabilities
