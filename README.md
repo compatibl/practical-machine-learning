@@ -1,6 +1,15 @@
 # Practical Machine Learning for Quantitative Finance
 
-This repo contains code for the workshop practice sessions.
+# Code
+
+This repo contains code for the practice sessions of the post-conference
+workshop Practical Machine Learning for Quantitative Finance.
+
+Date: Monday 29th & Tuesday 30th March 2021
+Time: EDT: 09.00 / BST: 14.00 / CEST: 15.00
+Duration: 2 hours each day
+
+# Agenda
 
 We will focus on two concepts in machine learning that hold great promise for
 quant finance: regression models on Day 1, and generative models on Day 2. 
@@ -13,16 +22,18 @@ AWS. Participants are welcome to just observe, or if desired  also participate
 in writing or running the code (participation is strictly optional). The code 
 will be available on GitHub after the workshop.
 
-Day 1 – Regression Models
+### Day 1 – Regression Models
 
-Regression model types
-Feedforward networks
-Autoencoders
+- Regression model types
+- Feedforward networks
+- Autoencoders
+
 Practice session: Estimation of Drift in Real-World Measure
 
-Day 2 – Generative Models
+### Day 2 – Generative Models
 
-Generative model types
-Joint and Conditional Probabilities
-Gibbs sampling
+- Generative model types
+- Joint and Conditional Probabilities
+- Gibbs sampling
+
 Practice session: Estimation of Probability in Real-World Measure
