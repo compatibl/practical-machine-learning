@@ -1,0 +1,43 @@
+CountryCode,CcyCode,CountryName
+AUS,AUD,Australia
+AUT,EUR,Austria
+BEL,EUR,Belgium
+CAN,CAD,Canada
+CHL,CLP,Chile
+CZE,CZK,Czech Republic
+DNK,DKK,Denmark
+EST,EUR,Estonia
+FIN,EUR,Finland
+FRA,EUR,France
+DEU,EUR,Germany
+GRC,EUR,Greece
+HUN,HUF,Hungary
+ISL,ISK,Iceland
+IRL,EUR,Ireland
+ISR,ILS,Israel
+ITA,EUR,Italy
+JPN,JPY,Japan
+KOR,KRW,Korea
+LUX,EUR,Luxembourg
+MEX,MXN,Mexico
+NLD,EUR,Netherlands
+NZL,NZD,New Zealand
+NOR,NOK,Norway
+POL,PLN,Poland
+PRT,EUR,Portugal
+SVK,EUR,Slovak Republic
+SVN,EUR,Slovenia
+ESP,EUR,Spain
+SWE,SEK,Sweden
+CHE,CHF,Switzerland
+TUR,TRY,Turkey
+GBR,GBP,United Kingdom
+USA,USD,United States
+EMU,EUR,Euro area
+BRA,BRL,Brazil
+CHN,CNY,"China, People’s Republic of"
+COL,COP,Colombia
+IND,INR,India
+IDN,IDR,Indonesia
+RUS,RUB,Russian Federation
+ZAF,ZAR,South Africa
