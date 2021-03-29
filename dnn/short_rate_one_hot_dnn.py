@@ -21,6 +21,7 @@ import pandas as pd
 import tensorflow as tf
 
 from util.file_util import FileUtil
+from util.plot_util import PlotUtil
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.layers.experimental import preprocessing
@@ -80,6 +81,9 @@ class ShortRateOneHotDnn:
 
     __lag_short_rate_feature = "short_rate(t+5y)"
     """Regression is performed to find mean of this feature."""
+
+    __use_mathplotlib = True
+    """Whether to use mathplotlib."""
 
     def train_model(self, *, caller_file: str):
         """
@@ -181,27 +185,53 @@ class ShortRateOneHotDnn:
         country_values = country_dataset[self.__lag_short_rate_feature]
 
         # Plot where predictions are compared to data for the same currency
-        plt.scatter(country_args, country_values, label=f'data({predict_country})')
-        plt.plot(short_rate_grid, test_predictions, color='k', label='regression')
-        plt.xlabel(self.__short_rate_feature)
-        plt.ylabel(self.__lag_short_rate_feature)
-        plt.title(f"{predict_country}({self.skip_samples}, {self.take_samples})")
-        plt.ylim([-2.5, 15])
-        plt.legend()
-        plt.show()
+        skip_label = f"skip={self.skip_samples}, " if self.skip_samples is not None else ""
+        take_label = f"skip={self.take_samples}" if self.take_samples is not None else ""
+
+        PlotUtil.plot_scatter(x_values=country_args,
+                              y_values=country_values,
+                              scatter_label=f'data({predict_country})',
+                              line_grid=short_rate_grid,
+                              line_values=test_predictions,
+                              line_label='regression',
+                              title=f"{predict_country}({skip_label}{take_label})",
+                              x_lable=self.__short_rate_feature,
+                              y_lable=self.__lag_short_rate_feature)
+
+        if self.__use_mathplotlib:
+            plt.scatter(country_args, country_values, label=f'data({predict_country})')
+            plt.plot(short_rate_grid, test_predictions, color='k', label='regression')
+            plt.xlabel(self.__short_rate_feature)
+            plt.ylabel(self.__lag_short_rate_feature)
+            plt.title(f"{predict_country}({skip_label}, {take_label})")
+            plt.ylim([-2.5, 15])
+            plt.xlim([-5, 25])
+            plt.legend()
+            plt.show()
 
         # Data only for all countries
         all_args = self.__input_dataset[self.__short_rate_feature]
         all_values = self.__input_dataset[self.__lag_short_rate_feature]
 
         # Plot where predictions are compared to all of the data
-        plt.scatter(all_args, all_values, label='data(all)')
-        plt.plot(short_rate_grid, test_predictions, color='k', label='regression')
-        plt.xlabel(self.__short_rate_feature)
-        plt.ylabel(self.__lag_short_rate_feature)
-        skip_label = f"skip={self.skip_samples}, " if self.skip_samples is not None else ""
-        take_label = f"skip={self.take_samples}" if self.take_samples is not None else ""
-        plt.title(f"{predict_country}({skip_label}{take_label})")
-        plt.ylim([-2.5, 15])
-        plt.legend()
-        plt.show()
+        PlotUtil.plot_scatter(x_values=all_args,
+                              y_values=all_values,
+                              scatter_label='data(all)',
+                              line_grid=short_rate_grid,
+                              line_values=test_predictions,
+                              line_label='regression',
+                              title=f"{predict_country}({skip_label}{take_label})",
+                              x_lable=self.__short_rate_feature,
+                              y_lable=self.__lag_short_rate_feature)
+
+        if self.__use_mathplotlib:
+            plt.scatter(all_args, all_values, label='data(all)')
+            plt.plot(short_rate_grid, test_predictions, color='k', label='regression')
+            plt.xlabel(self.__short_rate_feature)
+            plt.ylabel(self.__lag_short_rate_feature)
+            plt.title(f"{predict_country}({skip_label}{take_label})")
+            plt.ylim([-2.5, 15])
+            plt.xlim([-5, 25])
+            plt.legend()
+            plt.show()
+

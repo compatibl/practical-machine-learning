@@ -11,7 +11,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import attr
@@ -19,11 +18,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-
 from util.file_util import FileUtil
+from util.plot_util import PlotUtil
 from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras.layers.experimental import preprocessing
+
 
 
 @attr.s(slots=True, auto_attribs=True)
@@ -79,6 +79,9 @@ class ShortRateDnn:
 
     __lag_short_rate_feature = "short_rate(t+5y)"
     """Regression is performed to find mean of this feature."""
+
+    __use_mathplotlib = True
+    """Whether to use mathplotlib plots."""
 
     def train_model(self, *, caller_file: str):
         """
@@ -164,18 +167,33 @@ class ShortRateDnn:
         """
 
         short_rate_grid = tf.linspace(-5, 25, 31, True)
-        test_predictions = self.__model.predict(short_rate_grid)
+        test_predictions = self.__model.predict(short_rate_grid).flatten()
 
         # Data only for all countries
         all_args = self.__input_dataset[self.__short_rate_feature]
         all_values = self.__input_dataset[self.__lag_short_rate_feature]
 
         # Plot where predictions are compared to all of the data
-        plt.scatter(all_args, all_values, label='data')
-        plt.plot(short_rate_grid, test_predictions, color='k', label='regression')
-        plt.xlabel(self.__short_rate_feature)
-        plt.ylabel(self.__lag_short_rate_feature)
-        plt.title(f"{all}({self.skip_samples}, {self.take_samples})")
-        plt.ylim([-2.5, 15])
-        plt.legend()
-        plt.show()
+        skip_label = f"skip={self.skip_samples}, " if self.skip_samples is not None else ""
+        take_label = f"skip={self.take_samples}" if self.take_samples is not None else ""
+
+        PlotUtil.plot_scatter(x_values=all_args,
+                              y_values=all_values,
+                              scatter_label='data',
+                              line_grid=short_rate_grid,
+                              line_values=test_predictions,
+                              line_label='regression',
+                              title=f"all({skip_label}, {take_label})",
+                              x_lable=self.__short_rate_feature,
+                              y_lable=self.__lag_short_rate_feature)
+
+        if self.__use_mathplotlib:
+            plt.scatter(all_args, all_values, label='data')
+            plt.plot(short_rate_grid, test_predictions, color='k', label='regression')
+            plt.xlabel(self.__short_rate_feature)
+            plt.ylabel(self.__lag_short_rate_feature)
+            plt.title(f"all({skip_label}, {take_label})")
+            plt.ylim([-2.5, 15])
+            plt.xlim([-5, 25])
+            plt.legend()
+            plt.show()
