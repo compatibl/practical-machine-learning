@@ -13,7 +13,10 @@ workshop
 # Agenda
 
 We will focus on two concepts in machine learning that hold great promise for
-quant finance: regression models on Day 1, and generative models on Day 2. 
+quant finance: 
+
+- Regression models on Day 1
+- Generative models on Day 2 
 
 Each day, we will discuss theory during the first hour, and then use what
 we learned to solve practical quant finance problems during the second hour.
@@ -29,7 +32,7 @@ will be available on GitHub after the workshop.
 - Feedforward networks
 - Autoencoders
 
-Practice session: Estimation of Drift in Real-World Measure
+**Practice session: Estimation of Drift in Real-World Measure**
 
 ### Day 2 – Generative Models
 
@@ -37,4 +40,5 @@ Practice session: Estimation of Drift in Real-World Measure
 - Joint and Conditional Probabilities
 - Gibbs sampling
 
-Practice session: Estimation of Probability in Real-World Measure
+**Practice session: Estimation of Probability in Real-World Measure**
+
