@@ -1,16 +1,14 @@
-# Practical Machine Learning for Quantitative Finance
+# Practical Machine Learning Workshop Series
 
-# Code
+# Next Event
 
-This repo contains code for the practice sessions of the post-conference
-workshop
+## Practical Machine Learning for Quantitative Finance.
 
-### Practical Machine Learning for Quantitative Finance.
-
+- Post conference workshop at the WBS Spring Conference
 - Date: Monday 29th & Tuesday 30th March 2021
 - Time: EDT: 9-11am / BST: 2-4pm / CEST: 3-5pm
 
-# Agenda
+## Agenda
 
 We will focus on two concepts in machine learning that hold great promise for
 quant finance: 
