@@ -15,9 +15,9 @@
 import plotly.graph_objects as go
 
 SHOW_PLOT = True
-DARK_MODE = True
+DARK_MODE = False
 
-_plot_font = go.layout.Font(size=13, family='Roboto', color='#bdbdbd')
+_plot_font = go.layout.Font(size=13, family='Roboto', color='#000000')
 _plot_axes_dark_mode = dict(gridcolor='#303030', zerolinecolor='#494949')
 _plot_scene_axes_dark_mode = dict(backgroundcolor='#212121', **_plot_axes_dark_mode)
 
@@ -47,6 +47,13 @@ class PlotUtil:
 
         fig.update_layout(template=_plot_layout_template)
         fig.write_image(file_path)
+
+    @staticmethod
+    def update_layout(fig: go.Figure) -> None:
+        """Update plot layout."""
+
+        fig.update_layout(template=_plot_layout_template)
+        pass
 
     @staticmethod
     def show_plot(fig: go.Figure) -> None:
