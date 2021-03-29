@@ -56,3 +56,30 @@ class PlotUtil:
         if SHOW_PLOT:
             fig.update_layout(template=_plot_layout_template)
             fig.show()
+
+    @staticmethod
+    def plot_scatter(x_values, y_values, scatter_label, line_grid, line_values, line_label, title, x_lable, y_lable):
+        # Create plot with regression lines
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=x_values,
+            y=y_values,
+            name=scatter_label,
+            mode='markers',
+            marker={'color': 'blue', 'size': 3}))  # Change marker size here
+        fig.add_trace(
+            go.Scatter(
+                x=line_grid,
+                y=line_values,
+                mode='lines', line=dict(width=3.0), name=line_label))
+        fig.update_layout(
+            title=title,
+            xaxis=dict(showgrid=True, title={'text': x_lable}),
+            yaxis=dict(showgrid=True, title={'text': y_lable})
+        )
+        fig.update_yaxes(range=[-2.5, 15])
+        fig.update_xaxes(range=[-5, 25])
+
+        # Save plot file
+        PlotUtil.update_layout(fig)
+        PlotUtil.show_plot(fig)
